@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import StopWatch from "./StopWatch";
 
 export default function App() {
-    return(
-        <div></div>
-    )
+  return (
+    <div className="App">
+      <header className="App">
+        <StopWatch />
+      </header>
+    </div>
+  );
 }
