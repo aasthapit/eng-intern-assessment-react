@@ -28,7 +28,7 @@ export default function StopWatchButton(props: Props) {
   return (
     <div className="buttons">
       <button onClick={handleStopButton}>Restart</button>
-      <button onClick={handleStartButton}>Start/Stop</button>
+      <button onClick={handleStartButton}>Start</button>
       <button onClick={handleStopButton}>Stop</button>
     </div>
   );
