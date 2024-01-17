@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import StopWatchButton from "./StopWatchButton";
 
 export default function StopWatch() {
-  const [timeInSeconds, setStimeInSeconts] = useState<number>(0);
+  const [timeInSeconds, setTimeInSeconds] = useState<number>(0);
   const [timerArray, setTimerArray] = useState<Array<number | string>>([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function StopWatch() {
         <span className="time-sep">s</span>
       </div>
       <p className="stopWatchButtons"></p>
-      <StopWatchButton />
+      <StopWatchButton setTimeInSeconds={setTimeInSeconds} />
     </div>
   );
 }
