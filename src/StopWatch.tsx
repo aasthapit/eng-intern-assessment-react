@@ -6,7 +6,7 @@ export default function StopWatch() {
   // State to manage the time in seconds
   const [timeInSeconds, setTimeInSeconds] = useState<number>(0);
   // State to store the formatted timer array [hours, minutes, seconds]
-  const [timerArray, setTimerArray] = useState<Array<number | string>>([]);
+  const [timerArray, setTimerArray] = useState<Array<number | string>>(["00:00:00"]);
 
   // Effect hook to update the timerArray when timeInSeconds changes
   useEffect(() => {
@@ -14,21 +14,23 @@ export default function StopWatch() {
     let timerArray: Array<number | string> = calculateTimer(timeInSeconds);
     setTimerArray(timerArray);
   }, [timeInSeconds]);
-
+const [laps, setLaps] = useState<string[]>([]);
   return (
     <div className="Stopwatch">
       <h1>Stopwatch</h1>
-      <div className="time">
-        <span className="hours">{timerArray[0]}</span>
-        <span className="time-sep">:</span>
-        <span className="minutes">{timerArray[1]}</span>
-        <span className="time-sep">:</span>
-        <span className="seconds">{timerArray[2]}</span>
+      <div>
+        <span id="time" >
+          {timerArray.join(':')}
+        </span>
       </div>
       <div className="stopWatchButtons">
         <StopWatchButton setTimeInSeconds={setTimeInSeconds} />
+      </div>   
+      <div className="lap-list" data-testid="lap-list">
+        {laps.map((lap, index) => (
+          <p key={index}>{lap}</p>
+        ))}
       </div>
-      <div className="lap-list"></div>
     </div>
   );
 }

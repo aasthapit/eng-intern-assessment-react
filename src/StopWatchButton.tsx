@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 // Define the type for props expected by StopWatchButton component
 type Props = {
@@ -29,11 +29,40 @@ export default function StopWatchButton(props: Props) {
     clearInterval(intervalId);
   };
 
+  
+
+  const handleLapButton = () => {
+   // Enable the stop button and clear the interval
+    // Get the current time
+        var sourceContent = document.getElementById('time').innerText;
+
+        // Create a new list item
+        var listItem = document.createElement('li');
+        
+        // Set the currnet time as the list item content
+        listItem.innerText = sourceContent;
+
+        // Add the list item to the target list
+        document.getElementById('lap-list').appendChild(listItem);
+  }
+  
+  
+
+  //Function to handle the Pause button click
+  const handlePauseButton = () => {
+    // Enable the stop button and clear the interval
+    setButtonDisabled(false);
+    clearInterval(intervalId);
+  
+  };
+
+
   // Function to handle the Restart button click
   const handleResetButton = () => {
     // Clear the interval and reset timeInSeconds to 0
     clearInterval(intervalId);
     setTimeInSeconds(0);
+    document.getElementById('lap-list').innerHTML = "";
   };
 
   // Styles for disabled and enabled buttons
@@ -51,7 +80,7 @@ export default function StopWatchButton(props: Props) {
 
   return (
     <div className="buttons">
-      <button onClick={handleResetButton}>Restart</button>
+      <button onClick={handleResetButton}>Reset</button>
       <button
         onClick={handleStartButton}
         style={isButtonDisabled ? styles.disabledButton : styles.enabledButton}
@@ -66,6 +95,13 @@ export default function StopWatchButton(props: Props) {
       >
         Stop
       </button>
+      
+      <button onClick={handlePauseButton} style={!isButtonDisabled ? styles.disabledButton : styles.enabledButton}
+        disabled={!isButtonDisabled}>Pause</button>
+      <button onClick={handleStartButton} style={isButtonDisabled ? styles.disabledButton : styles.enabledButton}
+        disabled={isButtonDisabled}>Resume</button>
+        <div><button onClick={handleLapButton}>Lap</button>
+        <ol>Laps</ol></div>
     </div>
   );
 }
