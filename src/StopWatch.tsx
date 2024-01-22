@@ -16,18 +16,19 @@ export default function StopWatch() {
   }, [timeInSeconds]);
 
   return (
-    <div className="stopwatch">
-      <h1>StopWatch</h1>
+    <div className="Stopwatch">
+      <h1>Stopwatch</h1>
       <div className="time">
         <span className="hours">{timerArray[0]}</span>
-        <span className="time-sep">h</span>
+        <span className="time-sep">:</span>
         <span className="minutes">{timerArray[1]}</span>
-        <span className="time-sep">m</span>
+        <span className="time-sep">:</span>
         <span className="seconds">{timerArray[2]}</span>
-        <span className="time-sep">s</span>
       </div>
-      <p className="stopWatchButtons"></p>
-      <StopWatchButton setTimeInSeconds={setTimeInSeconds} />
+      <div className="stopWatchButtons">
+        <StopWatchButton setTimeInSeconds={setTimeInSeconds} />
+      </div>
+      <div className="lap-list"></div>
     </div>
   );
 }
