@@ -32,18 +32,18 @@ export default function StopWatchButton(props: Props) {
   
 
   const handleLapButton = () => {
-   // Enable the stop button and clear the interval
+    // Enable the Lap button
     // Get the current time
-        var sourceContent = document.getElementById('time').innerText;
+    var sourceContent = document.getElementById('time').innerText;
 
-        // Create a new list item
-        var listItem = document.createElement('li');
-        
-        // Set the currnet time as the list item content
-        listItem.innerText = sourceContent;
+    // Create a new list item
+    var listItem = document.createElement('li');
+    
+    // Set the currnet time as the list item content
+    listItem.innerText = sourceContent;
 
-        // Add the list item to the target list
-        document.getElementById('lap-list').appendChild(listItem);
+    // Add the list item to the target list
+    document.getElementById('lap-list').appendChild(listItem);
   }
   
   
