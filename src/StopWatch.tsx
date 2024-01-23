@@ -19,18 +19,14 @@ const [laps, setLaps] = useState<string[]>([]);
     <div className="Stopwatch">
       <h1>Stopwatch</h1>
       <div>
-        <span id="time" >
+        <span id="current-timer" >
           {timerArray.join(':')}
         </span>
       </div>
       <div className="stopWatchButtons">
         <StopWatchButton setTimeInSeconds={setTimeInSeconds} />
       </div>   
-      <div className="lap-list" data-testid="lap-list">
-        {laps.map((lap, index) => (
-          <p key={index}>{lap}</p>
-        ))}
-      </div>
+      
     </div>
   );
 }

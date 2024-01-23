@@ -10,6 +10,8 @@ export default function StopWatchButton(props: Props) {
   const { setTimeInSeconds } = props;
   // State to manage the interval ID for setInterval
   const [intervalId, setIntervalId] = useState<number>(0);
+   // State to store lap times
+  const [lapTimes, setLapTimes] = useState<string[]>([]);
 
   // Function to handle the Start button click
   const handleStartButton = () => {
@@ -34,16 +36,9 @@ export default function StopWatchButton(props: Props) {
   const handleLapButton = () => {
     // Enable the Lap button
     // Get the current time
-    var sourceContent = document.getElementById('time').innerText;
+    var sourceContent = document.getElementById('current-timer').innerText;
 
-    // Create a new list item
-    var listItem = document.createElement('li');
-    
-    // Set the currnet time as the list item content
-    listItem.innerText = sourceContent;
-
-    // Add the list item to the target list
-    document.getElementById('lap-list').appendChild(listItem);
+    setLapTimes(prevLapTimes => [...prevLapTimes, sourceContent]);
   }
   
   
@@ -100,8 +95,15 @@ export default function StopWatchButton(props: Props) {
         disabled={!isButtonDisabled}>Pause</button>
       <button onClick={handleStartButton} style={isButtonDisabled ? styles.disabledButton : styles.enabledButton}
         disabled={isButtonDisabled}>Resume</button>
-        <div><button onClick={handleLapButton}>Lap</button>
-        <ol>Laps</ol></div>
+        <div>
+      <button onClick={handleLapButton}>Lap</button>
+        <h2>Laps</h2>
+        <div className='lap-list' id='lap-list'data-testid="lap-list" >
+          {lapTimes.map((lapTime, index) => (
+          <span id="time" key={index}>{lapTime}</span>
+        ))}
+        </div>
+        </div>
     </div>
   );
 }

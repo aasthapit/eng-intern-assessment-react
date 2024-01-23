@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Stopwatch from '../src/StopWatch';
+import '@testing-library/jest-dom'
+
 
 describe('Stopwatch', () => {
   test('renders initial state correctly', () => {

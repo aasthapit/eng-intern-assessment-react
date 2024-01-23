@@ -10,7 +10,6 @@ export default function App() {
       </header>
       <body>  
         <StopWatch />
-        <ol id="lap-list"> </ol>
       </body>
     </div>
   );
