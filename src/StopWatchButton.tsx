@@ -98,11 +98,11 @@ export default function StopWatchButton(props: Props) {
         <div>
       <button onClick={handleLapButton}>Lap</button>
         <h2>Laps</h2>
-        <div className='lap-list' id='lap-list'data-testid="lap-list" >
+        <ol className='lap-list' id='lap-list' data-testid="lap-list" >
           {lapTimes.map((lapTime, index) => (
-          <span id="time" key={index}>{lapTime}</span>
+          <li id="time" key={index}>{lapTime}</li>
         ))}
-        </div>
+        </ol>
         </div>
     </div>
   );

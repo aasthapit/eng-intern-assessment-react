@@ -19,7 +19,7 @@ const [laps, setLaps] = useState<string[]>([]);
     <div className="Stopwatch">
       <h1>Stopwatch</h1>
       <div>
-        <span id="current-timer" >
+        <span id="current-timer" data-testid="current-timer">
           {timerArray.join(':')}
         </span>
       </div>
